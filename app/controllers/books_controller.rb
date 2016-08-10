@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   private :set_book, :book_params
 end
 
-
+# GET all books
 # ~/wdi/training/Ruby/another-demo/rails-api-library-demo (practicing)$ curl --include --request GET http://localhost:3000/books
 # HTTP/1.1 200 OK
 # X-Frame-Options: SAMEORIGIN
@@ -66,6 +66,30 @@ end
 # [{"id":1,"title":"Some title","author":"Some author","created_at":"2016-08-09T23:59:34.099Z","updated_at":"2016-08-09T23:59:34.099Z"},{"id":3,"title":"Some title","author":"Some some","created_at":"2016-08-09T23:59:46.095Z","updated_at":"2016-08-09T23:59:46.095Z"},{"id":4,"title":"Some title","author":"Another author","created_at":"2016-08-10T00:01:59.501Z","updated_at":"2016-08-10T00:01:59.501Z"}]~/wdi/training/Ruby/another-demo/rails-api-library-demo (practicing)$
 
 
+# curl --include --request GET http://localhost:3000/books/3
+#
+# ~/wdi/training/Ruby/another-demo/rails-api-library-demo (practicing)$ curl --include --request GET http://localhost:3000/books/3
+# HTTP/1.1 200 OK
+# X-Frame-Options: SAMEORIGIN
+# X-Xss-Protection: 1; mode=block
+# X-Content-Type-Options: nosniff
+# Content-Type: application/json; charset=utf-8
+# Vary: Origin
+# Etag: W/"8209a40c7262aa071a84ada8a0c9b36b"
+# Cache-Control: max-age=0, private, must-revalidate
+# X-Request-Id: 43b7e7b2-9a41-4b7b-ae94-e78383ccc467
+# X-Runtime: 0.019347
+# Server: WEBrick/1.3.1 (Ruby/2.3.0/2015-12-25)
+# Date: Wed, 10 Aug 2016 01:44:17 GMT
+# Content-Length: 130
+# Connection: Keep-Alive
+#
+# {"id":3,"title":"Some title","author":"Some some","created_at":"2016-08-09T23:59:46.095Z","updated_at":"2016-08-09T23:59:46.095Z"}~/wdi/training/Ruby/another-demo/rails-api-library-demo (practicing)$
+
+
+
+
+# CREATE a book
 # curl --include --request POST http://localhost:3000/books
 #   --header "Content-Type: application/json"
 #   --data '{
@@ -76,6 +100,7 @@ end
 #   }'
 
 
+# UPDATE a book
 # ~/wdi/training/Ruby/another-demo/rails-api-library-demo (practicing)$ curl --include --request PATCH http://localhost:3000/books/6 --header "Content-Type: application/json" --data '{"book": {"title": "Some title","author": "Some SOME some"}}'
 # HTTP/1.1 204 No Content
 # X-Frame-Options: SAMEORIGIN
@@ -93,7 +118,7 @@ end
 
 
 
-
+# DELETE a book
 # ~/wdi/training/Ruby/another-demo/rails-api-library-demo (practicing)$ curl --include --request DELETE http://localhost:3000/books/6
 # HTTP/1.1 204 No Content
 # X-Frame-Options: SAMEORIGIN
